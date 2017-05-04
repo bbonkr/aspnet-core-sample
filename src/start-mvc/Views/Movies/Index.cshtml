@@ -1,43 +1,58 @@
-@model IEnumerable<StartMvc.Models.Movie>
+@*model IEnumerable<StartMvc.Models.Movie> *@
+@model StartMvc.Models.MovieGenreModelView
+
 
 @{
     ViewData["Title"] = "Index";
 }
 
+<div class="page-header">
 <h2>Index</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+</div>
 
-<form asp-controller="Movies" asp-action="Index" method="get">
-    <div class="form-inline">
+<div class="well">
+<form asp-controller="Movies" asp-action="Index" method="get" rel="form" class="form-inline">
+    <div class="form-group">
+        <label>Genre:</label>
+        <select asp-for="MovieGenre" asp-items="Model.Genres" class="form-control">
+            <option value="">All</option>
+        </select>
+    </div>
+    <div class="form-group">
         <label>Title:</label>
         <input type="text" name="searchString" class="form-control"/>
         <input type="submit" value="Filter" class="btn btn-default" />
     </div>
 </form>
+</div>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.Movies[0].Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReleaseDate)
+                @Html.DisplayNameFor(model => model.Movies[0].ReleaseDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Genre)
+                @Html.DisplayNameFor(model => model.Movies[0].Genre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Movies[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].Rating)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Movies) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -50,6 +65,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |

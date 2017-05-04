@@ -3,8 +3,10 @@
 @{
     ViewData["Title"] = "Details";
 }
+<div class="page-header">
+    <h2>Details</h2>
+</div>
 
-<h2>Details</h2>
 
 <div>
     <h4>Movie</h4>
@@ -15,6 +17,12 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.ReleaseDate)
