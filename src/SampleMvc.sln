@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleMvc", "SampleMvc\SampleMvc.csproj", "{903BA51E-0A17-4AE3-A2E0-DF4C7FD78379}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleMvc.Dashboard", "SampleMvc.Dashboard\SampleMvc.Dashboard.csproj", "{2C41758C-F901-41BA-946F-DC08CF63A34B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{903BA51E-0A17-4AE3-A2E0-DF4C7FD78379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{903BA51E-0A17-4AE3-A2E0-DF4C7FD78379}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{903BA51E-0A17-4AE3-A2E0-DF4C7FD78379}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{903BA51E-0A17-4AE3-A2E0-DF4C7FD78379}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C41758C-F901-41BA-946F-DC08CF63A34B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C41758C-F901-41BA-946F-DC08CF63A34B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C41758C-F901-41BA-946F-DC08CF63A34B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C41758C-F901-41BA-946F-DC08CF63A34B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
