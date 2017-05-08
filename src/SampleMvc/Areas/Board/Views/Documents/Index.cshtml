@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SampleMvc.Board.Document>
+@{
+    ViewData["Title"] = "Home: Board area";
+}
+
+<div class="page-header">
+    <h1>@ViewData["Title"]</h1>
+</div>
+
+<div class="row">
+    <div class="col col-xs-12">
+        <a asp-action="Edit" asp-route-id="" class="btn btn-primary">New</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-xs-12">
+        
+
+        <table class="table">
+            <caption class="text-right">전체 <span class="badge">@String.Format("{0:n0}", Model.Count())</span> 건</caption>
+            <thead>
+                <tr>
+                    <th class="col col-xs-1">@Html.DisplayNameFor(m=> m.Id)</th>
+                    <th class="col col-xs-9">@Html.DisplayNameFor(m=> m.Title)</th>
+                    <th class="col col-xs-2">@Html.DisplayNameFor(m=>m.PostDate)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var entity in Model)
+                {
+                <tr>
+                    <td>@Html.DisplayFor(_ => entity.Id)</td>
+                    <td>@Html.ActionLink(entity.Title, "Detail", new { id = entity.Id })</td>
+                    <td>@Html.DisplayFor(_ => entity.PostDate)</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+        
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace SampleMvc.Board
+{
+    public interface IDocumentRepository
+    {
+        IEnumerable<Document> GetAll();
+
+        IEnumerable<Document> Search(int page = 1, string searchKeyword = "");
+
+        Document GetDocumentById(int id);
+
+        void AddDocument(Document entity);
+
+        void UpdateDocument(Document entity);
+
+        void DeleteDocument(Document entity);
+
+        void DeleteDocument(int id);
+    }
+}

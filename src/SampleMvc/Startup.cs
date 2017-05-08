@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.EntityFrameworkCore;
+using SampleMvc.Board;
+using SampleMvc.Dashboard.Data;
 
 namespace SampleMvc
 {
@@ -38,14 +40,37 @@ namespace SampleMvc
 
             services.Configure<Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions>(o =>
             {
-                o.FileProviders.Add(new CompositeFileProvider(new EmbeddedFileProvider(typeof(SampleMvc.Dashboard.Controllers.HomeController).GetTypeInfo().Assembly, typeof(SampleMvc.Dashboard.Controllers.HomeController).AssemblyQualifiedName)));
+                o.FileProviders.Add(new CompositeFileProvider(new EmbeddedFileProvider(
+                    typeof(SampleMvc.Dashboard.Controllers.HomeController).GetTypeInfo().Assembly,
+                    typeof(SampleMvc.Dashboard.Controllers.HomeController).AssemblyQualifiedName)));
+
+                o.FileProviders.Add(new CompositeFileProvider(new EmbeddedFileProvider(
+                    typeof(DocumentsController).GetTypeInfo().Assembly,
+                    typeof(DocumentsController).AssemblyQualifiedName)));
             });
 
-            services.AddDbContext<Dashboard.Data.ItemDbContext>(options => {
+            services.AddTransient<DbContext, ItemDbContext>();
+            services.AddTransient<DbContext, DocumentDbContext>();
+
+            services.AddTransient<IDocumentRepository, DocumentRepository>();
+
+            // dotnet ef migrations add "retry to add document entity" --context "SampleMvc.Dashboard.ItemDbContext"
+            services.AddDbContext<Dashboard.Data.ItemDbContext>(options =>
+            {
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection"), 
+                    Configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly("SampleMvc"));
             });
+
+            // dotnet ef migrations add "retry to add document entity" --context "SampleMvc.Board.DocumentDbContext"
+            services.AddDbContext<DocumentDbContext>(options =>
+            {
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection"),
+                    b => b.MigrationsAssembly("SampleMvc"));
+            });
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +101,8 @@ namespace SampleMvc
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            DocumentDbInitializer.Initialize(app.ApplicationServices.GetService<DocumentDbContext>());
         }
     }
 }

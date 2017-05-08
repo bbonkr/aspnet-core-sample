@@ -1,0 +1,103 @@
+@model SampleMvc.Board.Document
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>Document</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.PostDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PostDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PostIp)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PostIp)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifyDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ModifyDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifyIp)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ModifyIp)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ref)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ref)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Step)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Step)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RefOrder)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RefOrder)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AnswerNum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AnswerNum)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentNum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ParentNum)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReadCount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReadCount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CommentCount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CommentCount)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
