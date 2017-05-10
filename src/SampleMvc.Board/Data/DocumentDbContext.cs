@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SampleMvc.Board.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SampleMvc.Board
+namespace SampleMvc.Board.Data
 {
     public class DocumentDbContext : DbContext
     {
@@ -13,5 +14,7 @@ namespace SampleMvc.Board
         }
 
         public DbSet<Document> Documents { get; set; }
+
+        
     }
 }

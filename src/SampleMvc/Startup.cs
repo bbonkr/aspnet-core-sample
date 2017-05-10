@@ -12,6 +12,9 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.EntityFrameworkCore;
 using SampleMvc.Board;
 using SampleMvc.Dashboard.Data;
+using SampleMvc.Board.Data;
+using SampleMvc.Board.Models;
+using SampleMvc.Board.Controllers;
 
 namespace SampleMvc
 {
@@ -54,7 +57,7 @@ namespace SampleMvc
 
             services.AddTransient<IDocumentRepository, DocumentRepository>();
 
-            // dotnet ef migrations add "retry to add document entity" --context "SampleMvc.Dashboard.ItemDbContext"
+            // dotnet ef migrations add "AddDocumentEntity" --context "SampleMvc.Dashboard.ItemDbContext"
             services.AddDbContext<Dashboard.Data.ItemDbContext>(options =>
             {
                 options.UseSqlServer(
@@ -62,7 +65,7 @@ namespace SampleMvc
                     b => b.MigrationsAssembly("SampleMvc"));
             });
 
-            // dotnet ef migrations add "retry to add document entity" --context "SampleMvc.Board.DocumentDbContext"
+            // dotnet ef migrations add "AddDocumentEntity" --context "SampleMvc.Board.DocumentDbContext"
             services.AddDbContext<DocumentDbContext>(options =>
             {
                 options.UseSqlServer(

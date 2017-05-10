@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SampleMvc.Board
+namespace SampleMvc.Board.Models
 {
     public interface IDocumentRepository
     {

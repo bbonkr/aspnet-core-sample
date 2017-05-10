@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SampleMvc.Board
+namespace SampleMvc.Board.Models
 {
     public class Document
     {
@@ -34,18 +34,20 @@ namespace SampleMvc.Board
         [Display(Name = "작성자")]
         public string Name { get; set; }
 
-        [Display(Name="작성일")]
+        [Display(Name="작성시각")]
         [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd HH:mm:ss}", ApplyFormatInEditMode =true)]
         [DataType(DataType.DateTime)]
         public DateTime PostDate { get; set; }
 
-        [Display(Name = "IP Address")]
+        [Display(Name = "작성 IP Address")]
         public string PostIp { get; set; }
 
+        [Display(Name = "수정시각")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss}", ApplyFormatInEditMode = true)]
         [DataType(DataType.DateTime)]
         public DateTime ModifyDate { get; set; }
 
+        [Display(Name = "수정 IP Address")]
         public string ModifyIp { get; set; }
 
         public int Ref { get; set; }

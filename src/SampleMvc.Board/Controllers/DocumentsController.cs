@@ -1,13 +1,15 @@
 ﻿using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
+using SampleMvc.Board.Data;
+using SampleMvc.Board.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SampleMvc.Board
+namespace SampleMvc.Board.Controllers
 {
     [Area("Board")]
-    public class DocumentsController : Controller
+    public class DocumentsController : Microsoft.AspNetCore.Mvc.Controller
     {
         IDocumentRepository _repo;
 
@@ -49,6 +51,7 @@ namespace SampleMvc.Board
 
         [HttpPost]
         [ActionName("Edit")]
+        [ValidateAntiForgeryToken]
         public IActionResult Save([Bind("Id,Name,Title,Content")] Document entity)
         {
             if (ModelState.IsValid)
@@ -68,9 +71,11 @@ namespace SampleMvc.Board
 
                     _repo.UpdateDocument(entity);
                 }
+
+                return RedirectToAction("Detail", new { id = entity.Id });
             }
 
-            return RedirectToAction("Detail", new { id = entity.Id });
+            return View(entity);
         }
     }
 }

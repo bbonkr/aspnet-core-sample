@@ -1,9 +1,10 @@
-﻿using System;
+﻿using SampleMvc.Board.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SampleMvc.Board
+namespace SampleMvc.Board.Data
 {
     public class DocumentDbInitializer
     {
@@ -11,7 +12,7 @@ namespace SampleMvc.Board
         {
             context.Database.EnsureCreated();
 
-            if (context.Documents.Any())
+            if (context.Documents.Any() )
             {
                 // DB has been seed
                 return;
