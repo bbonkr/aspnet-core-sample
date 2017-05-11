@@ -8,7 +8,7 @@ namespace SampleMvc.Board.Models
     {
         IEnumerable<Document> GetAll();
 
-        IEnumerable<Document> Search(int page = 1, string searchKeyword = "");
+        IEnumerable<Document> Search(string searchKeyword = "");
 
         Document GetDocumentById(int id);
 

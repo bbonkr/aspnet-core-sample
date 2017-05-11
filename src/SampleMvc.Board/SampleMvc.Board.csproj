@@ -17,6 +17,10 @@
     <DotNetCliToolReference Include="Microsoft.Dotnet.Watcher.Tools" Version="1.0.0" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SampleMvc.Lib\SampleMvc.Lib.csproj" />
   </ItemGroup>    
 
 </Project>

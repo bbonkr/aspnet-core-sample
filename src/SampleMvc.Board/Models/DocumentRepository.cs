@@ -45,9 +45,18 @@ namespace SampleMvc.Board.Models
             return _context.Documents.FirstOrDefault(d => d.Id == id);
         }
 
-        public IEnumerable<Document> Search(int page, string searchKeyword)
+        public IEnumerable<Document> Search(string searchKeyword)
         {
-            return _context.Documents.Where(d => d.Title.ToUpper().Contains(searchKeyword) || d.Content.ToUpper().Contains(searchKeyword)).OrderByDescending(d => d.Id);
+            var list = _context.Documents.AsEnumerable();
+
+            if (!String.IsNullOrEmpty(searchKeyword))
+            {
+                list = list.Where(d => d.Title.ToUpper().Contains(searchKeyword.ToUpper()) || d.Content.ToUpper().Contains(searchKeyword.ToUpper()));
+            }
+
+            list = list.OrderByDescending(d => d.PostDate);
+
+            return list;
         }
 
         public void UpdateDocument(Document entity)

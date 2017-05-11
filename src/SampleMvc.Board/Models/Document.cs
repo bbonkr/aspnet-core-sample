@@ -9,9 +9,9 @@ namespace SampleMvc.Board.Models
 
         public Document()
         {
-            var now = DateTime.Now;
-            PostDate = now;
-            ModifyDate = now;
+            //var now = DateTime.Now;
+            //PostDate = now;
+            //ModifyDate = now;
         }
 
         [Key]
@@ -37,14 +37,14 @@ namespace SampleMvc.Board.Models
         [Display(Name="작성시각")]
         [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd HH:mm:ss}", ApplyFormatInEditMode =true)]
         [DataType(DataType.DateTime)]
-        public DateTime PostDate { get; set; }
+        public DateTime PostDate { get; set; } 
 
         [Display(Name = "작성 IP Address")]
-        public string PostIp { get; set; }
+        public string PostIp { get; set; } 
 
         [Display(Name = "수정시각")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss}", ApplyFormatInEditMode = true)]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.DateTime)]        
         public DateTime ModifyDate { get; set; }
 
         [Display(Name = "수정 IP Address")]

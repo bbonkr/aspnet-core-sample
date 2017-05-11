@@ -1,4 +1,6 @@
-﻿@model IEnumerable<SampleMvc.Board.Models.Document>
+﻿@*@model IEnumerable<SampleMvc.Board.Models.Document>*@
+@using SampleMvc.Lib;
+@model IPagedList<SampleMvc.Board.Models.Document>
 @{
     ViewData["Title"] = "Home: Board area";
 }
@@ -9,35 +11,61 @@
 
 <div class="row">
     <div class="col col-xs-12">
-        <a asp-action="Edit" asp-route-id="" class="btn btn-primary">New</a>
+        <a asp-action="Edit" asp-route-id="" asp-route-page="@ViewData["page"]" asp-route-keyword="@ViewData["keyword"]" class="btn btn-primary">New</a>
     </div>
 </div>
 
 <div class="row">
     <div class="col col-xs-12">
-        
+
 
         <table class="table">
-            <caption class="text-right">전체 <span class="badge">@String.Format("{0:n0}", Model.Count())</span> 건</caption>
+            <caption class="text-right">전체 <span class="badge">@String.Format("{0:n0}", Model.TotalCount)</span> 건</caption>
             <thead>
                 <tr>
-                    <th class="col col-xs-1">@Html.DisplayNameFor(m=> m.Id)</th>
-                    <th class="col col-xs-9">@Html.DisplayNameFor(m=> m.Title)</th>
-                    <th class="col col-xs-2">@Html.DisplayNameFor(m=>m.PostDate)</th>
+                    <th class="col col-xs-1">@Html.DisplayNameFor(m => m.FirstOrDefault().Id)</th>
+                    <th class="col col-xs-7">@Html.DisplayNameFor(m => m.FirstOrDefault().Title)</th>
+                    <th class="col col-xs-2">@Html.DisplayNameFor(m => m.FirstOrDefault().Name)</th>
+                    <th class="col col-xs-2">@Html.DisplayNameFor(m => m.FirstOrDefault().PostDate)</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var entity in Model)
                 {
-                <tr>
-                    <td>@Html.DisplayFor(_ => entity.Id)</td>
-                    <td>@Html.ActionLink(entity.Title, "Detail", new { id = entity.Id })</td>
-                    <td>@Html.DisplayFor(_ => entity.PostDate)</td>
-                </tr>
+                    <tr>
+                        <td>@Html.DisplayFor(_ => entity.Id)</td>
+                        <td>@Html.ActionLink(entity.Title, "Detail", new { id = entity.Id, page = (int)(ViewData["page"] ?? 1), keyword=$"{ViewData["keyword"]}" })</td>
+                        <td>@Html.DisplayFor(_ => entity.Name)</td>
+                        <td>@Html.DisplayFor(_ => entity.PostDate)</td>
+                    </tr>
                 }
             </tbody>
         </table>
 
-        
+        <form asp-action="Index" method="get">
+            <div class="row">
+                <div class="col col-xs-4 col-xs-offset-8">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">검색어</label>
+                            <div class="col-xs-9">
+                                <div class="input-group">
+                                    <input type="text" name="keyword" class="form-control" value="@($"{ViewData["keyword"]}")" />
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+        <div class="text-center">
+            <pagination asp-current="@((int)ViewData["page"])" asp-model="@Model" asp-pages="@((int)ViewData["PageSize"])" asp-display="10" />
+        </div>
     </div>
 </div>

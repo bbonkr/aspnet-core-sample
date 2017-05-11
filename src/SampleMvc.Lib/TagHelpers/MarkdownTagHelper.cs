@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 
 
-namespace SampleMvc.TagHelpers
+namespace SampleMvc.Lib.TagHelpers
 {
     [HtmlTargetElement("markdown")]
     public class MarkdownTagHelper : TagHelper
