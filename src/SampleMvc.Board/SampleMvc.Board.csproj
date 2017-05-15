@@ -8,7 +8,7 @@
         <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.1" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.2" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.1" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="1.1.1" />        
     </ItemGroup>
@@ -20,6 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SampleMvc.Board.Models\SampleMvc.Board.Models.csproj" />
+    <ProjectReference Include="..\SampleMvc.Data\SampleMvc.Data.csproj" />
     <ProjectReference Include="..\SampleMvc.Lib\SampleMvc.Lib.csproj" />
   </ItemGroup>    
 

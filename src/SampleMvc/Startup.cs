@@ -15,6 +15,7 @@ using SampleMvc.Dashboard.Data;
 using SampleMvc.Board.Data;
 using SampleMvc.Board.Models;
 using SampleMvc.Board.Controllers;
+using SampleMvc.Data;
 
 namespace SampleMvc
 {
@@ -53,7 +54,7 @@ namespace SampleMvc
             });
 
             services.AddTransient<DbContext, ItemDbContext>();
-            services.AddTransient<DbContext, DocumentDbContext>();
+            services.AddTransient<DbContext, AppDbContext>();
 
             services.AddTransient<IDocumentRepository, DocumentRepository>();
 
@@ -66,7 +67,7 @@ namespace SampleMvc
             });
 
             // dotnet ef migrations add "AddDocumentEntity" --context "SampleMvc.Board.DocumentDbContext"
-            services.AddDbContext<DocumentDbContext>(options =>
+            services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection"),
@@ -105,7 +106,7 @@ namespace SampleMvc
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            DocumentDbInitializer.Initialize(app.ApplicationServices.GetService<DocumentDbContext>());
+            AppDbInitializer.Initialize(app.ApplicationServices.GetService<AppDbContext>());
         }
     }
 }

@@ -5,10 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using SampleMvc.Board;
 using SampleMvc.Board.Data;
+using SampleMvc.Data;
 
 namespace SampleMvc.Migrations.DocumentDb
 {
-    [DbContext(typeof(DocumentDbContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20170508052831_retry to add document entity")]
     partial class retrytoadddocumententity
     {

@@ -1,14 +1,15 @@
-﻿using SampleMvc.Board.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
+using SampleMvc.Board.Models;
 
-namespace SampleMvc.Board.Data
+namespace SampleMvc.Data
 {
-    public class DocumentDbInitializer
+    public class AppDbInitializer
     {
-        public static void Initialize(DocumentDbContext context)
+        public static void Initialize(AppDbContext context)
         {
             context.Database.EnsureCreated();
 
@@ -37,7 +38,7 @@ namespace SampleMvc.Board.Data
 
             var documents = new List<Document>();
 
-            for(int i = 0; i < 2000; i++)
+            for (int i = 0; i < 2000; i++)
             {
                 documents.Add(new Document
                 {

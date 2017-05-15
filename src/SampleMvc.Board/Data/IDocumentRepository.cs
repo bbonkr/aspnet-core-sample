@@ -1,8 +1,9 @@
-﻿using System;
+﻿using SampleMvc.Board.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SampleMvc.Board.Models
+namespace SampleMvc.Board.Data
 {
     public interface IDocumentRepository
     {

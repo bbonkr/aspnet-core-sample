@@ -6,7 +6,7 @@ using SampleMvc.Dashboard.Models;
 
 namespace SampleMvc.Dashboard.Data
 {
-    public class ItemDbContext : DbContext
+    public partial class ItemDbContext : DbContext
     {
         public ItemDbContext(DbContextOptions<ItemDbContext> options) : base(options) { }
 

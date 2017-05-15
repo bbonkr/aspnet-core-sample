@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="AppDbContext.Board.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SampleMvc.Board.Models\SampleMvc.Board.Models.csproj" />
+    <ProjectReference Include="..\SampleMvc.Identity.Models\SampleMvc.Identity.Models.csproj" />
+  </ItemGroup>
+
+</Project>

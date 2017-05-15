@@ -1,15 +1,17 @@
 ﻿using SampleMvc.Board.Data;
+using SampleMvc.Board.Models;
+using SampleMvc.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SampleMvc.Board.Models
+namespace SampleMvc.Board.Data
 {
     public class DocumentRepository : IDocumentRepository
     {
-        private DocumentDbContext _context;
-        public DocumentRepository(DocumentDbContext context)
+        private AppDbContext _context;
+        public DocumentRepository(AppDbContext context)
         {
             _context = context;
         }

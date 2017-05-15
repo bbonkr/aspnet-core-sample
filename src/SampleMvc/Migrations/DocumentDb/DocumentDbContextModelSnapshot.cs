@@ -5,10 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using SampleMvc.Board;
 using SampleMvc.Board.Data;
+using SampleMvc.Data;
 
 namespace SampleMvc.Migrations.DocumentDb
 {
-    [DbContext(typeof(DocumentDbContext))]
+    [DbContext(typeof(AppDbContext))]
     partial class DocumentDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
